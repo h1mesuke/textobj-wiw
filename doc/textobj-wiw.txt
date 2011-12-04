@@ -1,0 +1,175 @@
+*textobj-wiw.txt*	Text objects to select a range of words for humans.
+
+Author  : h1mesuke <himesuke@gmail.com>
+Updated : 2011-12-02
+Version : 0.0.1
+License : MIT license {{{
+
+	Permission is hereby granted, free of charge, to any person obtaining
+	a copy of this software and associated documentation files (the
+	"Software"), to deal in the Software without restriction, including
+	without limitation the rights to use, copy, modify, merge, publish,
+	distribute, sublicense, and/or sell copies of the Software, and to
+	permit persons to whom the Software is furnished to do so, subject to
+	the following conditions:
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+==============================================================================
+CONTENTS					*textobj-wiw-contents*
+
+	Introduction		|textobj-wiw-introduction|
+	Interface		|textobj-wiw-interface|
+	  Key Mappings		  |textobj-wiw-key-mappings|
+	  Variables		  |textobj-wiw-variables|
+	ChangeLog		|textobj-wiw-changelog|
+
+==============================================================================
+INTRODUCTION					*textobj-wiw-introduction*
+
+	*textobj-wiw* is a Vim plugin that provides text-objects to select
+	a range of words in a Vim's word. Wiw stands for "word in word", more
+	precisely, a word for humans in a word for Vim.
+
+	For example, "this_is_a_word" is one word for Vim but four words for
+	humans. textobj-wiw provides text-objects for words for humans.
+
+
+	Requirements: ~
+	* Vim 7.2 or later
+	* |textobj-user| 0.3.8 or later
+	  - http://www.vim.org/scripts/script.php?script_id=2100
+	  - https://github.com/kana/vim-textobj-user
+
+==============================================================================
+INTERFACE					*textobj-wiw-interface*
+
+------------------------------------------------------------------------------
+KEY MAPPINGS					*textobj-wiw-key-mappings*
+
+	NOTE:
+	* In this section, "word" is a word for humans, not for Vim.
+	* In examples, [] represents the cursor or the selection.
+
+MOVE ~
+
+<Plug>(textobj-wiw-n)				*<Plug>(textobj-wiw-n)*
+
+			[count] words forward.
+
+			Before: Lorem_ipsum_do[l]or_sit_amet
+			After : Lorem_ipsum_dolor_[s]it_amet
+
+			Before: LoremIpsumDo[l]orSitAmet
+			After : LoremIpsumDolor[S]itAmet
+
+<Plug>(textobj-wiw-p)				*<Plug>(textobj-wiw-p)*
+
+			[count] words backward.
+
+			Before: Lorem_ipsum_do[l]or_sit_amet
+			After : Lorem_ipsum_[d]olor_sit_amet
+
+			Before: LoremIpsumDo[l]orSitAmet
+			After : LoremIpsum[D]olorSitAmet
+
+<Plug>(textobj-wiw-N)				*<Plug>(textobj-wiw-N)*
+
+			Forward to the end of word [count].
+
+			Before: Lorem_ipsum_do[l]or_sit_amet
+			After : Lorem_ipsum_dolo[r]_sit_amet
+
+			Before: LoremIpsumDo[l]orSitAmet
+			After : LoremIpsumDolo[r]SitAmet
+
+<Plug>(textobj-wiw-P)				*<Plug>(textobj-wiw-P)*
+
+			Backward to the end of word [count].
+
+			Before: Lorem_ipsum_do[l]or_sit_amet
+			After : Lorem_ipsu[m]_dolor_sit_amet
+
+			Before: LoremIpsumDo[l]orSitAmet
+			After : LoremIpsu[m]DolorSitAmet
+
+SELECT ~
+
+<Plug>(textobj-wiw-a)				*<Plug>(textobj-wiw-a)*
+
+			"a word", select [count] words including a trailing or
+			leading delimiter (if it exists).
+
+			Before: Lorem_ipsum_do[l]or_sit_amet
+			After : Lorem_ipsum_[dolor_]sit_amet
+
+			Before: LoremIpsumDo[l]orSitAmet
+			After : LoremIpsum[Dolor]SitAmet
+
+<Plug>(textobj-wiw-i)				*<Plug>(textobj-wiw-i)*
+
+			"inner word", select [count] words excluding
+			delimiters.
+
+			Before: Lorem_ipsum_do[l]or_sit_amet
+			After : Lorem_ipsum_[dolor]_sit_amet
+
+			Before: LoremIpsumDo[l]orSitAmet
+			After : LoremIpsum[Dolor]SitAmet
+
+DEFAULT KEY MAPPINGS ~
+					*textobj-wiw-default-key-mappings*
+	lhs	Modes	rhs
+	---------------------------------------
+	,w	nxo	<Plug>(textobj-wiw-n)
+	,b	nxo	<Plug>(textobj-wiw-p)
+	,e	nxo	<Plug>(textobj-wiw-N)
+	,ge	nxo	<Plug>(textobj-wiw-P)
+
+	a,w	xo	<Plug>(textobj-wiw-a)
+	i,w	xo	<Plug>(textobj-wiw-i)
+
+	
+	You can change the prefix of these key mappings by setting
+	|g:textobj_wiw_default_key_mappings_prefix| variable.
+
+	If you don't want these key mappings at all, define
+	|g:textobj_wiw_no_default_key_mappings| variable before this plugin is
+	loaded (e.g. in your |vimrc|).
+	
+	You can also use |:TextobjWiwDefaultKeyMappings| command to redefine
+	these key mappings. This command doesn't override existing {lhs}s
+	unless [!] is given.
+
+------------------------------------------------------------------------------
+VARIABLES					*textobj-wiw-variables*
+
+				*g:textobj_wiw_default_key_mappings_prefix*
+g:textobj_wiw_default_key_mappings_prefix
+
+	The prefix key of textobj-wiw's default key mappings.
+
+	Default: ","
+
+				*g:textobj_wiw_no_default_key_mappings*
+g:textobj_wiw_no_default_key_mappings
+
+	If defined, textobj-wiw doesn't define its default key mappings.
+
+==============================================================================
+CHANGELOG					*textobj-wiw-changelog*
+
+0.0.1	2011-12-02
+
+	* Initial version
+
+vim:tw=78:ts=8:ft=help:norl:noet:ai
