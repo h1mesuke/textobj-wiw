@@ -3,7 +3,7 @@
 "
 " File    : plugin/textobj/wiw.vim
 " Author  : h1mesuke <himesuke@gmail.com>
-" Updated : 2011-12-02
+" Updated : 2011-12-08
 " Version : 0.0.1
 " License : MIT license {{{
 "
@@ -34,7 +34,11 @@ endif
 let g:loaded_textobj_wiw = 1
 
 let s:save_cpo = &cpo
+let s:save_ic  = &ignorecase
 set cpo&vim
+set noignorecase
+" NOTE: Disable 'ignorecase' to avoid textobj-user's bug that defines key
+" mappings incorrectly when 'ignorecase' is enabled.
 
 let prefix = get(g:, 'textobj_wiw_default_key_mappings_prefix', ',')
 
@@ -192,6 +196,8 @@ function! s:compare_pos(pos1, pos2)
 endfunction
 
 let &cpo = s:save_cpo
+let &ignorecase = s:save_ic
 unlet s:save_cpo
+unlet s:save_ic
 
 " vim: filetype=vim
