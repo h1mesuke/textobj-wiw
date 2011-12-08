@@ -40,23 +40,23 @@ set noignorecase
 " NOTE: Disable 'ignorecase' to avoid textobj-user's bug that defines key
 " mappings incorrectly when 'ignorecase' is enabled.
 
-let prefix = get(g:, 'textobj_wiw_default_key_mappings_prefix', ',')
+let s:prefix = get(g:, 'textobj_wiw_default_key_mappings_prefix', ',')
 
 " Key-mappings
 call textobj#user#plugin('wiw', {
       \ '-': {
       \   '*pattern*': 'DUMMY',
-      \   'move-n'   : prefix . 'w',
-      \   'move-p'   : prefix . 'b',
-      \   'move-N'   : prefix . 'e',
-      \   'move-P'   : prefix . 'ge',
+      \   'move-n'   : s:prefix . 'w',
+      \   'move-p'   : s:prefix . 'b',
+      \   'move-N'   : s:prefix . 'e',
+      \   'move-P'   : s:prefix . 'ge',
       \
       \   '*sfile*'  : expand('<sfile>:p'),
-      \   'select-a' : 'a' . prefix . 'w', '*select-a-function*': 's:select_a',
-      \   'select-i' : 'i' . prefix . 'w', '*select-i-function*': 's:select_i',
+      \   'select-a' : 'a' . s:prefix . 'w', '*select-a-function*': 's:select_a',
+      \   'select-i' : 'i' . s:prefix . 'w', '*select-i-function*': 's:select_i',
       \ }
       \})
-unlet! prefix
+unlet s:prefix
 
 let s:WIW_HEAD = '\%(\(\<.\)\|\(\u\l\|\l\@<=\u\)\|\(\A\@<=\a\)\)'
 let s:WIW_TAIL = '\%(\(.\>\)\|\(\l\u\@=\|\u\%(\u\l\)\@=\)\|\(\a\A\@=\)\)'
