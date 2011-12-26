@@ -3,7 +3,7 @@
 "
 " File    : plugin/textobj/wiw.vim
 " Author  : h1mesuke <himesuke@gmail.com>
-" Updated : 2011-12-08
+" Updated : 2011-12-26
 " Version : 0.0.1
 " License : MIT license {{{
 "
@@ -174,7 +174,7 @@ function! s:cursor_is_in_word()
   "   cursor < tail < head or EOF
   let tail_pos = searchpos('.\>', 'cnW')
   if tail_pos[0] > 0
-    let head_pos = searchpos('\<.', 'cnW')
+    let head_pos = searchpos('\<.', 'nW')
     if head_pos[0] > 0
       " return (tail_pos < head_pos)
       return (s:compare_pos(tail_pos, head_pos) <= 0)
