@@ -28,7 +28,7 @@
 " }}}
 "=============================================================================
 
-if exists('g:loaded_textobj_wiw')
+if exists('g:loaded_textobj_wiw') && g:loaded_textobj_wiw
   finish
 endif
 let g:loaded_textobj_wiw = 1
