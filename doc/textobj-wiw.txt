@@ -1,7 +1,7 @@
-*textobj-wiw.txt*	Text objects to select a range of words for humans.
+*textobj-wiw.txt*	Text object to select a range of words for humans.
 
 Author  : h1mesuke <himesuke@gmail.com>
-Updated : 2011-12-02
+Updated : 2012-01-09
 Version : 0.0.1
 License : MIT license {{{
 
@@ -36,13 +36,12 @@ CONTENTS					*textobj-wiw-contents*
 ==============================================================================
 INTRODUCTION					*textobj-wiw-introduction*
 
-	*textobj-wiw* is a Vim plugin that provides text-objects to select
+	*textobj-wiw* is a Vim plugin that provides text-object to select
 	a range of words in a Vim's word. Wiw stands for "word in word", more
 	precisely, a word for humans in a word for Vim.
 
 	For example, "this_is_a_word" is one word for Vim but four words for
-	humans. textobj-wiw provides text-objects for words for humans.
-
+	humans. textobj-wiw provides text-object for words for humans.
 
 	Requirements: ~
 	* Vim 7.2 or later
@@ -62,7 +61,7 @@ KEY MAPPINGS					*textobj-wiw-key-mappings*
 
 MOVE ~
 
-<Plug>(textobj-wiw-n)				*<Plug>(textobj-wiw-n)*
+	<Plug>(textobj-wiw-n)			*<Plug>(textobj-wiw-n)*
 
 			[count] words forward.
 
@@ -72,7 +71,7 @@ MOVE ~
 			Before: LoremIpsumDo[l]orSitAmet
 			After : LoremIpsumDolor[S]itAmet
 
-<Plug>(textobj-wiw-p)				*<Plug>(textobj-wiw-p)*
+	<Plug>(textobj-wiw-p)			*<Plug>(textobj-wiw-p)*
 
 			[count] words backward.
 
@@ -82,7 +81,7 @@ MOVE ~
 			Before: LoremIpsumDo[l]orSitAmet
 			After : LoremIpsum[D]olorSitAmet
 
-<Plug>(textobj-wiw-N)				*<Plug>(textobj-wiw-N)*
+	<Plug>(textobj-wiw-N)			*<Plug>(textobj-wiw-N)*
 
 			Forward to the end of word [count].
 
@@ -92,7 +91,7 @@ MOVE ~
 			Before: LoremIpsumDo[l]orSitAmet
 			After : LoremIpsumDolo[r]SitAmet
 
-<Plug>(textobj-wiw-P)				*<Plug>(textobj-wiw-P)*
+	<Plug>(textobj-wiw-P)			*<Plug>(textobj-wiw-P)*
 
 			Backward to the end of word [count].
 
@@ -104,7 +103,7 @@ MOVE ~
 
 SELECT ~
 
-<Plug>(textobj-wiw-a)				*<Plug>(textobj-wiw-a)*
+	<Plug>(textobj-wiw-a)			*<Plug>(textobj-wiw-a)*
 
 			"a word", select [count] words including a trailing or
 			leading delimiter (if it exists).
@@ -115,7 +114,7 @@ SELECT ~
 			Before: LoremIpsumDo[l]orSitAmet
 			After : LoremIpsum[Dolor]SitAmet
 
-<Plug>(textobj-wiw-i)				*<Plug>(textobj-wiw-i)*
+	<Plug>(textobj-wiw-i)			*<Plug>(textobj-wiw-i)*
 
 			"inner word", select [count] words excluding
 			delimiters.
@@ -154,16 +153,17 @@ DEFAULT KEY MAPPINGS ~
 VARIABLES					*textobj-wiw-variables*
 
 				*g:textobj_wiw_default_key_mappings_prefix*
-g:textobj_wiw_default_key_mappings_prefix
+	g:textobj_wiw_default_key_mappings_prefix
 
-	The prefix key of textobj-wiw's default key mappings.
+		The prefix key of textobj-wiw's default key mappings.
 
-	Default: ","
+		Default: ","
 
 				*g:textobj_wiw_no_default_key_mappings*
-g:textobj_wiw_no_default_key_mappings
+	g:textobj_wiw_no_default_key_mappings
 
-	If defined, textobj-wiw doesn't define its default key mappings.
+		If defined, textobj-wiw doesn't define its default key
+		mappings.
 
 ==============================================================================
 CHANGELOG					*textobj-wiw-changelog*
