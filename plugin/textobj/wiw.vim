@@ -3,7 +3,7 @@
 "
 " File    : plugin/textobj/wiw.vim
 " Author  : h1mesuke <himesuke@gmail.com>
-" Updated : 2011-12-26
+" Updated : 2012-01-09
 " Version : 0.0.1
 " License : MIT license {{{
 "
@@ -199,5 +199,3 @@ let &cpo = s:save_cpo
 let &ignorecase = s:save_ic
 unlet s:save_cpo
 unlet s:save_ic
-
-" vim: filetype=vim
