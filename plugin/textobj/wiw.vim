@@ -1,5 +1,5 @@
 "=============================================================================
-" textobj-wiw - Text objects to select a range of words for humans.
+" textobj-wiw - Text object to select a range of words for humans.
 "
 " File    : plugin/textobj/wiw.vim
 " Author  : h1mesuke <himesuke@gmail.com>
@@ -195,7 +195,8 @@ function! s:compare_pos(pos1, pos2)
   endif
 endfunction
 
-let &cpo = s:save_cpo
 let &ignorecase = s:save_ic
-unlet s:save_cpo
 unlet s:save_ic
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
